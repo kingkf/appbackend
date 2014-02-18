@@ -80,6 +80,17 @@ public class UserServiceImpl implements UserService{
 		
 		return thedigest.toString();
 	}
+
+	@Override
+	public int addUser(String username, String password, String email){
+		try {
+			String hsw = md5Hash(password);
+		    userDAO.addUser(email, hsw, username);
+		} catch (Exception e) {
+			return 0;
+		}
+		return 1;
+	}
 	
 	/*public static void main(String[] args) {
 		String s = "123";

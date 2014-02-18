@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import models.Answer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,16 @@ public class AnswerServiceImpl implements AnswerService {
 	@Override
 	public Answer getAnswerById(Long id) {
 		return answerDAO.getAnswerById(id);
+	}
+	
+	@Override
+	public List<Answer> getAnswersByTopicId(Long topicId) {
+		return answerDAO.getAnswersByTopicId(topicId);
+	}
+	
+	@Override
+	public List<Answer> getAnswersByUserId(Long userId) {
+		return answerDAO.getAnswersByUserId(userId);
 	}
 
 }

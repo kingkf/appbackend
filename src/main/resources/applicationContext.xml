@@ -15,5 +15,7 @@
         <!-- 连接的超时时间，默认为半小时。 -->
         <property name="minEvictableIdleTimeMillis" value="3600000"></property>
     </bean>
-    
+    <bean id="answerService" class="service.impl.AnswerServiceImpl"/>
+    <bean id="topicService" class="service.impl.TopicServiceImpl"/>
+    <bean id="userService" class="service.impl.UserServiceImpl"/>
 </beans>

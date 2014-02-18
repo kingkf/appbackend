@@ -20,7 +20,10 @@ public interface AnswerDAO {
 	public Answer getAnswerById(@SQLParam("id") Long id);
 	
 	@SQL("select id, score, grade_number, info, user_id, topic_id from `answer` where topic_id=(:id)")
-	public List<Answer> getAnswerByTopticId(@SQLParam("id") Long id);
+	public List<Answer> getAnswersByTopicId(@SQLParam("id") Long id);
+	
+	@SQL("select id, score, grade_number, info, user_id, topic_id from `answer` where user_id=(:id)")
+	public List<Answer> getAnswersByUserId(@SQLParam("id") Long id);
 	
 	
 

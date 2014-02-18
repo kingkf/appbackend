@@ -11,7 +11,7 @@ import net.paoding.rose.jade.annotation.SQLParam;
  */
 @DAO
 public interface UserDAO {
-	public static String VIEW_USER = " id, username, email, password, exp, rank";
+	public static String VIEW_USER = " id, username, email, password, exp, rank ";
 	
 	@SQL("select " + VIEW_USER + "from `user` where email=(:email)")
 	public User getUserByEmail(@SQLParam("email") String email);
@@ -21,5 +21,10 @@ public interface UserDAO {
 	
 	@SQL("select " + VIEW_USER + " from `user` where id=(:id)")
 	public User getUserById(@SQLParam("id") Long id);
+	
+	@SQL("insert into `user` (email, password, username) values (:email, :password, :username)")
+	public int addUser(@SQLParam("email") String email,
+			@SQLParam("password") String password,
+			@SQLParam("username") String username);
 
 }
