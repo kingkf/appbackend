@@ -9,7 +9,21 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	private Long exp;
+	private Long rank;
 	
+	public Long getExp() {
+		return exp;
+	}
+	public void setExp(Long exp) {
+		this.exp = exp;
+	}
+	public Long getRank() {
+		return rank;
+	}
+	public void setRank(Long rank) {
+		this.rank = rank;
+	}
 	/**
 	 * @return the id
 	 */

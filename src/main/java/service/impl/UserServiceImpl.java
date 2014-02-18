@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 	
+	@Override
+	public User getUserById(Long id) {
+		return userDAO.getUserById(id);
+	}
+	
 	private User getUserByEmailOrUsername(String emailOrUsername) {
 		emailOrUsername = StringUtils.trim(emailOrUsername);
 		if (StringUtils.isBlank(emailOrUsername)) {

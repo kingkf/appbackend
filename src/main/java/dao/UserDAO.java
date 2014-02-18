@@ -11,12 +11,15 @@ import net.paoding.rose.jade.annotation.SQLParam;
  */
 @DAO
 public interface UserDAO {
-	public static String VIEW_USER = " id, username, email, password ";
+	public static String VIEW_USER = " id, username, email, password, exp, rank";
 	
 	@SQL("select " + VIEW_USER + "from `user` where email=(:email)")
 	public User getUserByEmail(@SQLParam("email") String email);
 	
 	@SQL("select " + VIEW_USER + "from `user` where username=(:username)")
 	public User getUserByUsername(@SQLParam("username") String username);
+	
+	@SQL("select " + VIEW_USER + " from `user` where id=(:id)")
+	public User getUserById(@SQLParam("id") Long id);
 
 }

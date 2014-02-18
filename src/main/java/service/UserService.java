@@ -12,6 +12,10 @@ import models.User;
  */
 public interface UserService {
 	
-	public User login(String emailOrUsername, String password) throws NoSuchUserOrPasswordErrorException, UnsupportedEncodingException, NoSuchAlgorithmException;
-
+	public User login(String emailOrUsername, String password)
+			throws NoSuchUserOrPasswordErrorException,
+			UnsupportedEncodingException, NoSuchAlgorithmException;
+    
+	public User getUserById(Long id);
+	
 }

@@ -14,8 +14,8 @@ public class AnswerServiceImpl implements AnswerService {
 	private AnswerDAO answerDAO;
 	
 	@Override
-	public Long addAnswer(String info) {
-		return answerDAO.addAnswer(info);
+	public Long addAnswer(String info, Long userId, Long topicId) {
+		return answerDAO.addAnswer(info, userId, topicId);
 	}
 	
 	@Override

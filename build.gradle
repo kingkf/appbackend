@@ -16,4 +16,5 @@ dependencies {
     compile "commons-dbcp:commons-dbcp:1.2.2"
     compile "mysql:mysql-connector-java:5.1.10"
     compile "org.json:json:20131018"
+    compile "com.google.code.gson:gson:2.2.4"
 }
