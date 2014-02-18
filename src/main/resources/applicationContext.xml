@@ -7,7 +7,7 @@
         destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url"
-            value="jdbc:mysql://115.28.174.52:3306/test?useUnicode=true&amp;characterEncoding=utf-8"></property>
+            value="jdbc:mysql://115.28.174.52:3306/app_language?useUnicode=true&amp;characterEncoding=utf-8"></property>
         <property name="username" value="root"></property>
         <property name="password" value=""></property>
         <!-- 运行判断连接超时任务的时间间隔，单位为毫秒，默认为-1，即不执行任务。 -->
