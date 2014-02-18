@@ -24,7 +24,7 @@ public class TopicServiceImpl implements TopicService {
 		while(ulTopicIndex <= 0) {
 			ulTopicIndex = random.nextLong();
 		}
-		ulTopicIndex = ulTopicIndex % topicNumber;
+		ulTopicIndex = ulTopicIndex % topicNumber + 1;
 		
 		Topic topic = topicDAO.getTopicById(ulTopicIndex);
 		return topic;
