@@ -88,8 +88,8 @@ public class AnswerController {
 		Long userTopicRating = Long.parseLong(request.getParameter("userTopicRating"));
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (answerInfo.equals("")) {
-			map.put("succ", -1);
-			map.put("msg", "回答不能为空");
+			map.put("code", -1);
+			map.put("info", "回答不能为空");
 			
 			return "@" + new Gson().toJson(map);
 			
@@ -97,8 +97,8 @@ public class AnswerController {
 		
 		answerService.addAnswer(answerInfo, userId, topicId);
 		topicService.score(topicId, userTopicRating);
-		map.put("succ", 1);
-		map.put("msg", "答案添加成功");
+		map.put("code", 0);
+		map.put("info", "答案添加成功");
 		
 		return "@" + new Gson().toJson(map);
 	}

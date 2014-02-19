@@ -5,7 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.google.gson.Gson;
 
 
 
@@ -24,11 +28,14 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDAO userDAO;
 	
+	private final Log logger = LogFactory.getLog(getClass());
+	
 	private static final String SALT = "amtmYnVwdEBnbWFpbC5jb20=";
 	
 	@Override
 	public User login(String emailOrUsername, String password) throws NoSuchUserOrPasswordErrorException, UnsupportedEncodingException, NoSuchAlgorithmException {
 		User user = getUserByEmailOrUsername(emailOrUsername);
+		logger.info("login user: " + new Gson().toJson(user));
 		verifyPassword(user, password);
 		
 		return user;
@@ -55,11 +62,16 @@ public class UserServiceImpl implements UserService{
 	private void verifyPassword(User user, String password)
 			throws NoSuchUserOrPasswordErrorException, UnsupportedEncodingException, NoSuchAlgorithmException {
 		if (user == null) {
+			logger.info("user null");
 			throw new NoSuchUserOrPasswordErrorException();
 		}
 		
 		String hashPw = md5Hash(password);
+		logger.info("login password: " + hashPw);
+		logger.info("user password: " + user.getPassword());
+		
 		if(!StringUtils.equals(hashPw, user.getPassword())) {
+			logger.info("no  such user");
 			throw new NoSuchUserOrPasswordErrorException();
 		}
 		
