@@ -85,12 +85,14 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	private String md5(String s) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		logger.info("s:" + s);
 		byte[] bytesOfMessage = s.getBytes("UTF-8");
+		logger.info("bytesOfMessage:" + bytesOfMessage);
 
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] thedigest = md.digest(bytesOfMessage);
 		
-		return thedigest.toString();
+		return new String(thedigest);
 	}
 
 	@Override
@@ -104,8 +106,8 @@ public class UserServiceImpl implements UserService{
 		return 1;
 	}
 	
-	/*public static void main(String[] args) {
-		String s = "123";
+	public static void main(String[] args) {
+		String s = "ddd";
 		byte[] bytesOfMessage=null;
 		try {
 			bytesOfMessage = s.getBytes("UTF-8");
@@ -122,6 +124,6 @@ public class UserServiceImpl implements UserService{
 		}
 		byte[] thedigest = md.digest(bytesOfMessage);
 		System.out.println(thedigest.toString());
-	}*/
+	}
 
 }
