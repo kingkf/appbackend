@@ -18,6 +18,8 @@ public interface UserService {
     
 	public User getUserById(Long id);
 	
+	public User getUserByUsername(String username);
+	
 	public int addUser(String username, String password, String email);
 	
 }

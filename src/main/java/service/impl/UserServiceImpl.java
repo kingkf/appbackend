@@ -126,4 +126,10 @@ public class UserServiceImpl implements UserService{
 		System.out.println(thedigest.toString());
 	}
 
+	@Override
+	public User getUserByUsername(String username) {
+		return userDAO.getUserByUsername(username);
+		
+	}
+
 }

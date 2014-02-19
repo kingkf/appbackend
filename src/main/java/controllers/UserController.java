@@ -22,8 +22,8 @@ public class UserController {
 	@Get("GetPersonalInfo")
 	public String getPersonalInfo(Invocation inv) {
 		HttpServletRequest request = inv.getRequest();
-		Long userId = Long.parseLong(request.getParameter("userId"));
-		User user = userService.getUserById(userId);
+		String username = request.getParameter("username");
+		User user = userService.getUserByUsername(username);
 		return "@" + new Gson().toJson(user);
 	}
 
