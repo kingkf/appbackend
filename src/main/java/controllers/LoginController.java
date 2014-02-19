@@ -7,6 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.gson.Gson;
+
 import exception.NoSuchUserOrPasswordErrorException;
 import service.UserService;
 import models.User;
@@ -65,12 +67,12 @@ public class LoginController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (StringUtils.isBlank(emailOrUsername) || StringUtils.isBlank(password)) {
-            map.put("succ", STATUS_CODE_PASSWORD_FORMAT_ERROR);
-            map.put("msg", STATUS_MAP.get(STATUS_CODE_PASSWORD_FORMAT_ERROR));
-            return "@" + new JSONObject(map);
+            /*map.put("succ", STATUS_CODE_PASSWORD_FORMAT_ERROR);
+            map.put("msg", STATUS_MAP.get(STATUS_CODE_PASSWORD_FORMAT_ERROR));*/
+            return "@" + new Gson().toJson(null);
         }
 		
-		try {
+		/*try {
 			User user = userService.login(emailOrUsername, password);
 			if (user == null) {
                 map.put("succ", STATUS_CODE_NOT_EXIST);
@@ -87,9 +89,16 @@ public class LoginController {
 			map.put("succ", STATUS_CODE_UNKNOWN);
 			map.put("msg", STATUS_MAP.get(STATUS_CODE_UNKNOWN));
 			return "@" + new JSONObject(map);
+		}*/
+		User user = null;
+		try {
+			user = userService.login(emailOrUsername, password);
+			
+			return "@" + new Gson().toJson(user);
+			
+		} catch (Exception e) {
+			return "@" + new Gson().toJson(user);
 		}
-		
-		return "@" + new JSONObject(map);
 
 	}
 
