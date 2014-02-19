@@ -62,7 +62,7 @@ public class LoginController {
 	
 	@Post
 	public String index(Invocation inv,
-			@Param("userId") String emailOrUsername,
+			@Param("username") String emailOrUsername,
 			@Param("password") String password) {
 
 		Map<String, Object> map = new HashMap<String, Object>();

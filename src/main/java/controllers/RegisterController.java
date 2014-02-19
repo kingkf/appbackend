@@ -26,6 +26,7 @@ public class RegisterController {
 		
 		int ret = userService.addUser(username, password, email);
 		
+		
 		//FIXME: 为了兼容客户端= =
 		if (ret == 1) {
 			return "@" + "0";
