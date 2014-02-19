@@ -38,6 +38,7 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public void score(Long topicId, Long score) {
+		if (score == 0) return;
 	    Topic topic = topicDAO.getTopicById(topicId);
 	    Long topicScore = topic.getScore();
 	    Long gradeNumber = topic.getGradeNumber();

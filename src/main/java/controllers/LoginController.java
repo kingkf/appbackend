@@ -25,9 +25,9 @@ import net.paoding.rose.web.annotation.rest.Post;
 
 @Path("login")
 public class LoginController {
-	private static int STATUS_CODE_SUCCESS = 1;
+	private static int STATUS_CODE_SUCCESS = 0;
 
-    private static int STATUS_CODE_NOT_EXIST = 0;
+    private static int STATUS_CODE_NOT_EXIST = 1;
 
     private static int STATUS_CODE_PASSWORD_FORMAT_ERROR = -1;
 
@@ -67,30 +67,30 @@ public class LoginController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (StringUtils.isBlank(emailOrUsername) || StringUtils.isBlank(password)) {
-            /*map.put("succ", STATUS_CODE_PASSWORD_FORMAT_ERROR);
-            map.put("msg", STATUS_MAP.get(STATUS_CODE_PASSWORD_FORMAT_ERROR));*/
-            return "@" + new Gson().toJson(null);
+            map.put("code", STATUS_CODE_PASSWORD_FORMAT_ERROR);
+            map.put("info", STATUS_MAP.get(STATUS_CODE_PASSWORD_FORMAT_ERROR));
+            return "@" + new Gson().toJson(map);
         }
 		
-		/*try {
+		try {
 			User user = userService.login(emailOrUsername, password);
 			if (user == null) {
-                map.put("succ", STATUS_CODE_NOT_EXIST);
-                map.put("msg", STATUS_MAP.get(STATUS_CODE_NOT_EXIST));
-                return "@" + new JSONObject(map);
+                map.put("code", STATUS_CODE_NOT_EXIST);
+                map.put("info", STATUS_MAP.get(STATUS_CODE_NOT_EXIST));
+                return "@" + new Gson().toJson(map);
             }
-			map.put("succ", STATUS_CODE_SUCCESS);
-			map.put("msg", STATUS_MAP.get(STATUS_CODE_SUCCESS));
+			map.put("code", STATUS_CODE_SUCCESS);
+			map.put("info", STATUS_MAP.get(STATUS_CODE_SUCCESS));
 		} catch (NoSuchUserOrPasswordErrorException e) {
-			map.put("succ", STATUS_CODE_WRONG_PASSWORD);
-			map.put("msg", STATUS_MAP.get(STATUS_CODE_WRONG_PASSWORD));
-			return "@" + new JSONObject(map);
+			map.put("code", STATUS_CODE_WRONG_PASSWORD);
+			map.put("info", STATUS_MAP.get(STATUS_CODE_WRONG_PASSWORD));
+			return "@" + new Gson().toJson(map);
 		} catch (Exception e) {
-			map.put("succ", STATUS_CODE_UNKNOWN);
-			map.put("msg", STATUS_MAP.get(STATUS_CODE_UNKNOWN));
-			return "@" + new JSONObject(map);
-		}*/
-		User user = null;
+			map.put("code", STATUS_CODE_UNKNOWN);
+			map.put("info", STATUS_MAP.get(STATUS_CODE_UNKNOWN));
+			return "@" + new Gson().toJson(map);
+		}
+		/*User user = null;
 		try {
 			user = userService.login(emailOrUsername, password);
 			
@@ -98,7 +98,9 @@ public class LoginController {
 			
 		} catch (Exception e) {
 			return "@" + new Gson().toJson(user);
-		}
+		}*/
+		
+		return "@" + new Gson().toJson(map);
 
 	}
 
