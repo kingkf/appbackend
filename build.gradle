@@ -10,8 +10,8 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile "net.paoding:paoding-rose:1.2-SNAPSHOT"
-    compile "net.paoding:paoding-rose-jade:1.2-SNAPSHOT"
+    compile "net.paoding:rose:1.2-SNAPSHOT"
+    compile "net.paoding:jade:1.2-SNAPSHOT"
     compile "sslext:sslext:1.10-4"
     compile "commons-dbcp:commons-dbcp:1.2.2"
     compile "mysql:mysql-connector-java:5.1.10"
